@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/select_all"
+            android:fontFamily="@font/fauna_one"
+            android:background="@drawable/cutom_button"
+            android:layout_width="0dp"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:text="전체선택" />
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="0dp"
+            android:fontFamily="@font/fauna_one"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textStyle="bold"
+            android:layout_weight="1"
+            android:textSize="20sp"
+            android:background="@drawable/cutom_button"
+            android:text="지우기" />
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="0dp"
+            android:fontFamily="@font/fauna_one"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:background="@drawable/cutom_button"
+            android:layout_margin="5dp"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="일정 저장" />
+
+    </LinearLayout>
+</LinearLayout>

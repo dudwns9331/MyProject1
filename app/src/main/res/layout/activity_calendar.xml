@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/container"
+    tools:ignore="HardcodedText">
+
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mcv_arrowColor="@android:color/black"
+        app:mcv_selectionColor="@color/colorPrimary" />
+
+
+    <fragment
+        android:id="@+id/list_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:name="com.kangwon.macaronproject.view_cal.list_fragment" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_btn"
+        android:padding="5dp">
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/add_button"
+            android:fontFamily="@font/fauna_one"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/cutom_button"
+            android:textStyle="bold"
+            android:text="추가"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/select_range"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_weight="1"
+            android:background="@drawable/cutom_button"
+            android:fontFamily="@font/fauna_one"
+            android:text="범위 선택"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/clear_button"
+            android:background="@drawable/cutom_button"
+            android:fontFamily="@font/fauna_one"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="지우기"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/modify_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cutom_button"
+            android:text="수정"
+            android:visibility="gone"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+</LinearLayout>
