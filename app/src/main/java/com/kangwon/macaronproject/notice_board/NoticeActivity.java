@@ -17,6 +17,7 @@ import com.kangwon.macaronproject.fragment.MyTopPostsFragment;
 import com.kangwon.macaronproject.fragment.RecentPostFragment;
 import com.kangwon.macaronproject.login.BaseActivity;
 import com.kangwon.macaronproject.login.LoginActivity;
+import com.kangwon.macaronproject.salary.Salary;
 
 public class NoticeActivity extends BaseActivity {
 
@@ -92,7 +93,12 @@ public class NoticeActivity extends BaseActivity {
         } else if (i == R.id.cal) {
             onBackPressed();
             return true;
-        } else {
+        } else if (i == R.id.salary_menu) {
+            Intent intent = new Intent(getApplicationContext(), Salary.class);
+            startActivity(intent);
+            return true;
+        }
+        else {
             return super.onOptionsItemSelected(item);
         }
     }

@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -156,6 +157,12 @@ public class MainActivity extends BaseActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+//        if(mDatabase.child("users").child(mUser.getUid()).child("isOwner").getValue(Boolean.class)){
+//            Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
+//        }
 
         mDatabase.child("schedule").addValueEventListener(new ValueEventListener() {
             @Override
@@ -344,8 +351,6 @@ public class MainActivity extends BaseActivity {
                 materialCalendarView.clearSelection();  // 선택으로 칠해진 날짜들 초기화
             }
         });
-
-
     }
 
     private class ApiSimulator extends AsyncTask<Void, Void, List<CalendarDay>> {

@@ -5,38 +5,53 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".salary.Salary">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/loginicon"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="30dp"
-        android:layout_gravity="center"
-        >
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:src="@drawable/logo_v2" />
 
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
     <EditText
         android:id="@+id/worker_id"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="이름을 입력하세요."
         android:layout_weight="3"
         />
-
+        <EditText
+            android:id="@+id/salary_per_hour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="number"
+            android:hint="시급을 입력하세요"
+            android:layout_weight="3"
+            />
+        </LinearLayout>
     <Button
+        android:layout_gravity="center"
         android:id="@+id/search_button"
-        android:layout_weight="1"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="검색" />
+        android:fontFamily="@font/fauna_one"
+        android:background="@drawable/cutom_button"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="갱신" />
 
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,18 +59,15 @@
             android:orientation="vertical" >
 
             <TextView
-                android:id="@+id/worker_info"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="근무자 정보 :" />
-
-            <TextView
                 android:id="@+id/salary"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="급여 :" />
+                android:fontFamily="@font/fauna_one"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@android:color/black"
+                android:text="사용자와 시급을 입력하세요." />
         </LinearLayout>
-    </ScrollView>
 </LinearLayout>
