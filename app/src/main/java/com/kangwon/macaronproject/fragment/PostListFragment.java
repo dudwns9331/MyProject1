@@ -59,7 +59,8 @@ public abstract class PostListFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();        mManager = new LinearLayoutManager(getActivity());
+        mAuth = FirebaseAuth.getInstance();
+        mManager = new LinearLayoutManager(getActivity());
         mManager.setReverseLayout(true);
         mManager.setStackFromEnd(true);
         mRecycler.setLayoutManager(mManager);

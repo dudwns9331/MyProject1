@@ -1,8 +1,10 @@
 package com.kangwon.macaronproject.add;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +35,7 @@ public class Work_date_adapter extends RecyclerView.Adapter<Work_date_adapter.Vi
     private int count = 0;
     private String date;
 
-    private Map<String, Object> workers = new HashMap<>();
+//    public DulicateMap<String, String> workers;     ///////////////////////////////////////////////////////// 2020/12/21 수정
     private ArrayList<String> start_time;
     private ArrayList<String> end_time;
 
@@ -48,6 +50,7 @@ public class Work_date_adapter extends RecyclerView.Adapter<Work_date_adapter.Vi
     // context 전달
     public Work_date_adapter(Context context) {
         this.context = context;
+//        workers = new DulicateMap<>();  ///////////////////////////////////////////////////////////////2020/12/21 수정
     }
 
     @NonNull
@@ -94,6 +97,8 @@ public class Work_date_adapter extends RecyclerView.Adapter<Work_date_adapter.Vi
                     item.addwork_time(start_time + "~" + end_time);
                     item.setWorker(worker);
                     item.setWork_time(start_time + "~" + end_time);
+
+//                    workers.put(worker, split_time(start_time, end_time));              //////////////////////////////////////////2020/12/21 수정
                 }
                 notifyDataSetChanged();
             }
@@ -263,6 +268,30 @@ public class Work_date_adapter extends RecyclerView.Adapter<Work_date_adapter.Vi
             textView4.setText(item.getWorkerall());
             textView5.setText(item.getWork_timeall());
         }
+    }
+// 2020/12/21 수정
+    private static String split_time(String start_time, String end_time) {
+
+        int time;
+
+        start_time = start_time.replace("시", "-");
+        end_time = end_time.replace("시", "-");
+
+        start_time = start_time.replace("분", "-");
+        end_time = end_time.replace("분", "-");
+
+        String start[] = start_time.split("-");
+        String end[] = end_time.split("-");
+
+        int s0 = Integer.parseInt(start[0]);
+        int e0 = Integer.parseInt(end[0]);
+
+        int s1 = Integer.parseInt(start[1]);
+        int e1 = Integer.parseInt(end[1]);
+
+        time = (e0 * 60 + e1) - (s0 * 60 - s1);
+
+        return String.valueOf(time);
     }
 }
 

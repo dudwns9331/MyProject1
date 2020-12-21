@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -33,6 +35,7 @@ import com.kangwon.macaronproject.login.BaseActivity;
 import com.kangwon.macaronproject.login.LoginActivity;
 import com.kangwon.macaronproject.login.MemberInfoActivity;
 import com.kangwon.macaronproject.notice_board.NoticeActivity;
+import com.kangwon.macaronproject.salary.Salary;
 import com.kangwon.macaronproject.view_cal.list_fragment;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.CalendarMode;
@@ -450,6 +453,11 @@ public class MainActivity extends BaseActivity {
                 startActivity(intent1);
 //                finish();
                 break;
+
+            case R.id.salary_menu :
+                Intent intent2 = new Intent(this, Salary.class);
+                intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent2);
             default:
                 break;
         }
@@ -467,7 +475,7 @@ public class MainActivity extends BaseActivity {
             backKeyPressedTime = System.currentTimeMillis();
             Toast.makeText(this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
         } else if (System.currentTimeMillis() - backKeyPressedTime < 800) {
-            finish();
+            ActivityCompat.finishAffinity(this);
         }
 
     }

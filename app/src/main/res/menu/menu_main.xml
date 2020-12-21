@@ -8,9 +8,15 @@
     <item android:id="@+id/board"
         android:title="게시판"
         />
+
+    <item android:id="@+id/salary_menu"
+        android:title="급여"
+        />
+
     <item android:id="@+id/mainupdate"
         android:title="업데이트"
         />
+
 
     <item android:id="@+id/action_logout"
         android:title="로그아웃"
