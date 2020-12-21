@@ -37,7 +37,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number"
-            android:hint="시급을 입력하세요"
+            android:hint="시급을 입력하세요."
             android:layout_weight="3"
             />
         </LinearLayout>

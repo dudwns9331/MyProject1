@@ -14,7 +14,7 @@ public class User {
     public String email;
     public String id;
     public String phone;
-    public boolean isowner;
+    public String isowner;
 
     public User() {
         // Default constructor required for calls to DataSnapshot.getValue(User.class)
@@ -30,7 +30,10 @@ public class User {
         this.email = email;
         this.username = username;
         this.phone = phone;
-        this.isowner = isowner;
+        if(isowner)
+            this.isowner = "true";
+        else
+            this.isowner = "false";
     }
 
     @Exclude

@@ -1,4 +1,4 @@
-package com.kangwon.macaronproject.add;
+package com.kangwon.macaronproject.salary;
 
 import java.util.ArrayList;
 import java.util.HashMap;

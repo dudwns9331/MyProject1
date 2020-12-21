@@ -56,6 +56,12 @@ public class MemberInfoActivity extends BaseActivity implements View.OnClickList
         // Views
         setProgressBar(R.id.meminfoprogressBar);
 
+        if(!Env.checker) {
+            binding.meminfoIsowner.setVisibility(View.INVISIBLE);
+        } else {
+            binding.meminfoIsowner.setVisibility(View.VISIBLE);
+        }
+
         binding.meminfoupdateBtn.setOnClickListener(this);
         binding.meminforevokeBtn.setOnClickListener(this);
         binding.meminfocancelBtn.setOnClickListener(this);

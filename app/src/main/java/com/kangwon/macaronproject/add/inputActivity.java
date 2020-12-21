@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.database.DatabaseReference;
 import com.kangwon.macaronproject.MainActivity;
 import com.kangwon.macaronproject.R;
+import com.kangwon.macaronproject.env.Env;
 import com.kangwon.macaronproject.swipefunction.ItemTouchHelperCallback;
 
 import java.util.ArrayList;
@@ -56,6 +57,17 @@ public class inputActivity extends AppCompatActivity {
         delete_button = findViewById(R.id.delete);              // 지우기 버튼
         save_button = findViewById(R.id.save);                  // 저장 버튼
 
+
+        if(!Env.checker) {
+            select_all_button.setVisibility(View.INVISIBLE);
+            delete_button.setVisibility(View.INVISIBLE);
+            save_button.setText("뒤로가기");
+        } else {
+            save_button.setText("일정 저장");
+            select_all_button.setVisibility(View.VISIBLE);
+            delete_button.setVisibility(View.VISIBLE);
+        }
+
         // 리싸이클러뷰 -> 달력에서 넣은 날짜 배열 리스트로 표현해서 보여줌
         recyclerView = findViewById(R.id.recyclerView);
 
@@ -72,8 +84,11 @@ public class inputActivity extends AppCompatActivity {
         recyclerView.setAdapter(date_adapter);
 
         // 스와이프, 터치 관련 인터페이스, 클래스 활용
-        itemTouchHelper = new ItemTouchHelper(new ItemTouchHelperCallback(date_adapter));
-        itemTouchHelper.attachToRecyclerView(recyclerView);
+
+        if(Env.checker) {
+            itemTouchHelper = new ItemTouchHelper(new ItemTouchHelperCallback(date_adapter));
+            itemTouchHelper.attachToRecyclerView(recyclerView);
+        }
 
         // 메인 엑티비티(달력) 에서 intent로 값 불러옴
         Intent intent = getIntent();

@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +34,7 @@ import com.kangwon.macaronproject.env.Env;
 import com.kangwon.macaronproject.login.BaseActivity;
 import com.kangwon.macaronproject.login.LoginActivity;
 import com.kangwon.macaronproject.login.MemberInfoActivity;
+import com.kangwon.macaronproject.models.User;
 import com.kangwon.macaronproject.notice_board.NoticeActivity;
 import com.kangwon.macaronproject.salary.Salary;
 import com.kangwon.macaronproject.view_cal.list_fragment;
@@ -132,6 +132,15 @@ public class MainActivity extends BaseActivity {
             clear_button.setVisibility(View.GONE);
             modify_button.setVisibility(View.VISIBLE);
 
+            if (!Env.checker) {
+                add_button.setText("일정 보기");
+                clear_button.setVisibility(View.GONE);
+                select_all_range.setVisibility(View.GONE);
+            } else {
+                add_button.setText("추가");
+                clear_button.setVisibility(View.VISIBLE);
+                select_all_range.setVisibility(View.VISIBLE);
+            }
 
             materialCalendarView.setSelectionMode(MaterialCalendarView.SELECTION_MODE_SINGLE);
             is_modify = true;
@@ -149,6 +158,9 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_calendar);
@@ -158,12 +170,25 @@ public class MainActivity extends BaseActivity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
-
-        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
-//        if(mDatabase.child("users").child(mUser.getUid()).child("isOwner").getValue(Boolean.class)){
+//        if(mDatabase.child("users").child(mUser.getUid()).child("isowner").getKey().equals("true")){
 //            Toast.makeText(this, "test", Toast.LENGTH_SHORT).show();
 //        }
 
+        FirebaseUser mUser = FirebaseAuth.getInstance().getCurrentUser();
+        mDatabase.child("users").child(mUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Env.setOwner(snapshot.child("isowner").getValue(String.class));
+                Log.d("hihihihi", Env.ISOWNER);
+                new ApiSimulator(temp).executeOnExecutor(Executors.newSingleThreadExecutor());
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         mDatabase.child("schedule").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -359,13 +384,22 @@ public class MainActivity extends BaseActivity {
 
         private ApiSimulator(ArrayList<String> Time_Result) {
             this.Time_Result = Time_Result;
+            if (!Env.checker) {
+                add_button.setText("일정 보기");
+                clear_button.setVisibility(View.GONE);
+                select_all_range.setVisibility(View.GONE);
+            } else {
+                add_button.setText("추가");
+                clear_button.setVisibility(View.VISIBLE);
+                select_all_range.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override
         protected List<CalendarDay> doInBackground(Void... voids) {
 
             try {
-                Thread.sleep(500);
+                Thread.sleep(700);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -400,6 +434,7 @@ public class MainActivity extends BaseActivity {
             if (isFinishing()) {
                 return;
             }
+
             materialCalendarView.addDecorator(new EventDecorator(Color.MAGENTA, calendarDays, MainActivity.this));
         }
     }
@@ -454,12 +489,11 @@ public class MainActivity extends BaseActivity {
             case R.id.action_logout:
                 Intent intent1 = new Intent(this, LoginActivity.class);
                 mAuth.signOut();
-                intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent1);
 //                finish();
                 break;
 
-            case R.id.salary_menu :
+            case R.id.salary_menu:
                 Intent intent2 = new Intent(this, Salary.class);
                 intent2.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent2);
@@ -471,6 +505,7 @@ public class MainActivity extends BaseActivity {
 
 
     private long backKeyPressedTime = 0;
+
     @Override
     public void onBackPressed() {
 
