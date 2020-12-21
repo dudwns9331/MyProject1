@@ -12,11 +12,13 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.kangwon.macaronproject.R;
 import com.kangwon.macaronproject.databinding.ActivityNoticeBinding;
+import com.kangwon.macaronproject.env.Env;
 import com.kangwon.macaronproject.fragment.MyPostsFragment;
 import com.kangwon.macaronproject.fragment.MyTopPostsFragment;
 import com.kangwon.macaronproject.fragment.RecentPostFragment;
 import com.kangwon.macaronproject.login.BaseActivity;
 import com.kangwon.macaronproject.login.LoginActivity;
+import com.kangwon.macaronproject.login.MemberInfoActivity;
 import com.kangwon.macaronproject.salary.Salary;
 
 public class NoticeActivity extends BaseActivity {
@@ -95,6 +97,11 @@ public class NoticeActivity extends BaseActivity {
             return true;
         } else if (i == R.id.salary_menu) {
             Intent intent = new Intent(getApplicationContext(), Salary.class);
+            startActivity(intent);
+            return true;
+        } else if (i == R.id.mainupdate) {
+            Intent intent = new Intent(getApplicationContext(), MemberInfoActivity.class);
+            intent.putExtra("from", Env.BOARD);
             startActivity(intent);
             return true;
         }
