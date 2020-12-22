@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -42,6 +43,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
+
+        Env.checker = true;
 
         // Views
         setProgressBar(R.id.loginprogressBar);
@@ -174,7 +177,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             backKeyPressedTime = System.currentTimeMillis();
             Toast.makeText(this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
         } else if (System.currentTimeMillis() - backKeyPressedTime < 800) {
-            finish();
+            ActivityCompat.finishAffinity(this);
         }
     }
 }

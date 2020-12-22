@@ -179,7 +179,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Env.setOwner(snapshot.child("isowner").getValue(String.class));
-                Log.d("hihihihi", Env.ISOWNER);
+//                Log.d("hihihihi", Env.ISOWNER);
                 new ApiSimulator(temp).executeOnExecutor(Executors.newSingleThreadExecutor());
 
             }

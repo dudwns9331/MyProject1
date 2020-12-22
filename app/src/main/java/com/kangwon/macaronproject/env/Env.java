@@ -1,5 +1,8 @@
 package com.kangwon.macaronproject.env;
 
+
+// 오류?
+
 public class Env {
 
     public static final int MAIN = 1000;
@@ -13,13 +16,15 @@ public class Env {
 
 
     public static void setOwner(String isowner){
-        if(isowner.equals("true")){
-            checker = true;
-            ISOWNER = "true";
-        }
-        else{
-            checker = false;
-            ISOWNER = "false";
+
+        if(isowner != null) {
+            if (isowner.equals("true")) {
+                checker = true;
+                ISOWNER = "true";
+            } else {
+                checker = false;
+                ISOWNER = "false";
+            }
         }
     }
     public static int split_time(String end_time, String start_time) {
