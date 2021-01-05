@@ -14,9 +14,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import yj.p.mymacaron.MainActivity;
 import yj.p.mymacaron.R;
 import yj.p.mymacaron.env.Env;
+import yj.p.mymacaron.swipefunction.ItemTouchHelperCallback;
 
 import java.util.ArrayList;
 
@@ -31,12 +34,9 @@ public class inputActivity extends AppCompatActivity {
     Button save_button;             // 저장 버튼
     Work_date work_date;
 
-
-    private DatabaseReference mDatabase;
+    private final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
 
     public ArrayList<String> data;
-    public ArrayList<String> data2 = new ArrayList<String>();
-    public ArrayList<String> delete_data = new ArrayList<String>();
     @SuppressLint("StaticFieldLeak")
     public static Work_date_adapter date_adapter;
 
@@ -96,7 +96,6 @@ public class inputActivity extends AppCompatActivity {
         for (int i = 0; i < data.size(); i++) {
             // , 으로 구분된 날짜 하나씩 찢기
             String[] result = data.get(i).split("-");
-
 
             int year = Integer.parseInt(result[0]);
             int month = Integer.parseInt(result[1]);
@@ -158,11 +157,8 @@ public class inputActivity extends AppCompatActivity {
         });
     }
 
-
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
     }
-
-
 }

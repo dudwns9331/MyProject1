@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import yj.p.mymacaron.R;
+import yj.p.mymacaron.swipefunction.ItemTouchHelperListener;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -65,11 +66,11 @@ public class Work_date_adapter extends RecyclerView.Adapter<Work_date_adapter.Vi
         viewHolder.setItem(item);
         // 아이템이 선택되었다면
         if (isItemSelected(position)) {
-            viewHolder.textView4.setTextColor(Color.MAGENTA); // 이 색으로 선택된거 배경 표시
-            viewHolder.textView5.setTextColor(Color.MAGENTA); // 이 색으로 선택된거 배경 표시
+            viewHolder.textView4.setTextColor(Color.MAGENTA); // 이 색으로 선택된 글씨 표시
+            viewHolder.textView5.setTextColor(Color.MAGENTA); // 이 색으로 선택된거 글씨 표시
         } else {
-            viewHolder.textView4.setTextColor(Color.BLACK); // 이 색으로 선택된거 배경 표시
-            viewHolder.textView5.setTextColor(Color.BLACK); // 이 색으로 선택된거 배경 표시
+            viewHolder.textView4.setTextColor(Color.BLACK); // 이 색으로 선택된거 글씨 표시
+            viewHolder.textView5.setTextColor(Color.BLACK); // 이 색으로 선택된거 글씨 표시
         }
     }
 
@@ -107,6 +108,7 @@ public class Work_date_adapter extends RecyclerView.Adapter<Work_date_adapter.Vi
     }
 
     public void deleteItem(Work_date item) {
+        mDatabase.child("schedule").child(item.getDateData()).removeValue();
         items.remove(item);
     }
 
