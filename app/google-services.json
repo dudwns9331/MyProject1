@@ -1,63 +1,42 @@
 {
   "project_info": {
-    "project_number": "406773771065",
-    "firebase_url": "https://macaron-eb516.firebaseio.com",
-    "project_id": "macaron-eb516",
-    "storage_bucket": "macaron-eb516.appspot.com"
+    "project_number": "797330767654",
+    "firebase_url": "https://mymacaron-76b25-default-rtdb.firebaseio.com",
+    "project_id": "mymacaron-76b25",
+    "storage_bucket": "mymacaron-76b25.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:406773771065:android:eb8da6fb92cd78f92f16e8",
+        "mobilesdk_app_id": "1:797330767654:android:22046ec44ea40308e70be7",
         "android_client_info": {
-          "package_name": "com.kangwon.macaron"
+          "package_name": "yj.p.mymacaron"
         }
       },
       "oauth_client": [
         {
-          "client_id": "406773771065-nm65jklf26gij5aups67vd8urh9vmuao.apps.googleusercontent.com",
+          "client_id": "797330767654-faku4q3p19254lphj7jt191192r7ceg4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "yj.p.mymacaron",
+            "certificate_hash": "d68ee86eae3bfad917ab5c5895067c945fcb7cd6"
+          }
+        },
+        {
+          "client_id": "797330767654-j7baav9keo7gibmsfmtvucum5reto1sj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCAUykioCao_DLyi14xwD2PEkviyBt-GQI"
+          "current_key": "AIzaSyDosFYSLIOdCRmpZZ3zYT8UxCXRMLgMqeo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "406773771065-nm65jklf26gij5aups67vd8urh9vmuao.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:406773771065:android:6a5a7db14dc0bd712f16e8",
-        "android_client_info": {
-          "package_name": "com.kangwon.macaronproject"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "406773771065-nm65jklf26gij5aups67vd8urh9vmuao.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCAUykioCao_DLyi14xwD2PEkviyBt-GQI"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "406773771065-nm65jklf26gij5aups67vd8urh9vmuao.apps.googleusercontent.com",
+              "client_id": "797330767654-j7baav9keo7gibmsfmtvucum5reto1sj.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
